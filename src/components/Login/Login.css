@@ -1,0 +1,44 @@
+.card-header h3 {
+  color: black;
+}
+
+.card {
+  margin: 10px;
+}
+
+.input-in {
+  padding: 10px 15px;
+  width: 300px;
+}
+
+.input-login {
+  padding: 12px 80px;
+  width: 335px;
+}
+
+.input-ra {
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+form {
+  text-align: center;
+}
+
+.input-login:hover {
+  background-color: slateblue;
+}
+
+.input-ra:focus-visible {
+  border-color: rgb(0, 60, 255);
+  color: rgb(0, 60, 255);
+  outline: none;
+}
+
+.links a {
+  margin-left: 4px;
+}
+
+.hr2 {
+  margin-bottom: 5px;
+}
