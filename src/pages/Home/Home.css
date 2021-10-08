@@ -3,7 +3,9 @@
   text-decoration: none;
 }
 
-body {
+html, body {
+  position: relative;
+  height:100%;
   background: #f0f2f5;
 }
 
@@ -25,7 +27,7 @@ body {
 .rodape {
   text-align: center;
   position: absolute;
-  bottom: 0;
+  bottom: auto;
   background-color: slateblue;
   width: 100%;
 }
@@ -37,9 +39,11 @@ body {
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 }
 
-
-
 @media screen and (max-width: 800px) {
+  .box {
+    padding-top: 20px;
+    padding-bottom: 2y5px;
+  }
   .container {
     display: flex;
     flex-direction: column;
@@ -51,5 +55,16 @@ body {
   }
   .right {
     margin: 20px auto;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .left {
+    border: 1px solid red;
+  }
+  .right {
+    border: 1px solid orange;
+    margin: 20px auto;
+    width: 75%;
   }
 }

@@ -40,5 +40,16 @@ form {
 }
 
 .hr2 {
-  margin-bottom: 5px;
+  margin: 5px;
+}
+
+@media screen and (max-width: 400px) {
+  .input-in {
+    margin: 10px auto;
+    width: 50%; /* Valor da Largura */  
+  }
+  .input-login {
+    padding: 6px 40px;
+    width: auto;
+  }
 }
