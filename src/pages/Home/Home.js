@@ -6,7 +6,7 @@ import './Home.css'
 
 function Home() {
   return (
-    <div>
+    <>
       <div className="box">
         <div className="container">
           <div className="left">
@@ -21,7 +21,7 @@ function Home() {
       <div className="rodape">
         Aoba - Aux
       </div>
-    </div>
+    </>
   );
 }
 
