@@ -18,6 +18,7 @@ function verifyLogin({ email, password }) {
 
 function Login() {
   const [values, setValues] = useState(initialState);
+  const [validLogin, setValidLogin] = useState(false);
   const { email, password } = values;
   const { setToken } = useContext(AuthContext);
   const history = useHistory();
@@ -39,16 +40,21 @@ function Login() {
       history.push('/dashboard');
     }
     setValues(initialState);
+    setValidLogin(true);
   }
 
   return (
     <div className="card">
       <form onSubmit={onSubmit}>
+        {validLogin && 
+          <h3>Credenciais inexistente ou invalida</h3>
+        }
         <div className="input-form">
           <div className="input-div">
             <input type="text" name="email"
               className="input-in input-ra" placeholder="Email"
               value={email}
+              required
               onChange={onChange}
             />
           </div>
@@ -56,6 +62,7 @@ function Login() {
             <input type="password" name="password"
               className="input-in input-ra" onChange={onChange}
               value={password}
+              required
               placeholder="Senha" />
           </div>
         </div>

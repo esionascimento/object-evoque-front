@@ -9,9 +9,9 @@ const RoutesPrivate = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={() => token
+      render={(props) => token
         ? <Component {...rest} />
-        : <Redirect to="/not-found" />
+        : <Redirect to={{ pathname: "/not-found", state: { from: props.location } } }/>
       }
     />
   )
@@ -19,6 +19,7 @@ const RoutesPrivate = ({ component: Component, ...rest }) => {
 
 RoutesPrivate.propTypes = {
   component: PropTypes.func.isRequired,
+  location: PropTypes.func.isRequired,
 }
 
 export default RoutesPrivate;
