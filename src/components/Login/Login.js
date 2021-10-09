@@ -2,7 +2,8 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import StoreContext from '../Context/Context';
+/* import StoreContext from '../Context/Context'; */
+import { AuthContext } from '../Context/auth';
 import './Login.css';
 
 function initialState() {
@@ -10,7 +11,7 @@ function initialState() {
 }
 
 function login({ email, password }) {
-  if (email === 'admin@admin.com' && password === 'admin') {
+  if (email === 'admin' && password === 'admin') {
     return { token: '1234' };
   }
   return { error: 'Email ou senha invalido' };
@@ -18,7 +19,8 @@ function login({ email, password }) {
 
 function Login() {
   const [values, setValues] = useState(initialState);
-  const { setToken } = useContext(StoreContext);
+  /* const { setToken } = useContext(StoreContext); */
+  const { setToken } = useContext(AuthContext);
   const history = useHistory();
 
   function onChange(event) {
@@ -35,7 +37,6 @@ function Login() {
     console.log(values);
 
     const { token } = login(values);
-    console.log(token);
     if (token) {
       setToken(token);
       history.push('/dashboard');
