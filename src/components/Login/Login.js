@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-/* import StoreContext from '../Context/Context'; */
 import { AuthContext } from '../Context/auth';
 import './Login.css';
 
@@ -10,7 +9,7 @@ function initialState() {
   return { email: '', password: '' };
 }
 
-function login({ email, password }) {
+function verifyLogin({ email, password }) {
   if (email === 'admin' && password === 'admin') {
     return { token: '1234' };
   }
@@ -19,13 +18,12 @@ function login({ email, password }) {
 
 function Login() {
   const [values, setValues] = useState(initialState);
-  /* const { setToken } = useContext(StoreContext); */
+  const { email, password } = values;
   const { setToken } = useContext(AuthContext);
   const history = useHistory();
 
   function onChange(event) {
     const { value, name } = event.target;
-    console.log(values);
     setValues({
       ...values,
       [name]: value,
@@ -34,9 +32,8 @@ function Login() {
 
   function onSubmit(event) {
     event.preventDefault();
-    console.log(values);
+    const { token } = verifyLogin(values);
 
-    const { token } = login(values);
     if (token) {
       setToken(token);
       history.push('/dashboard');
@@ -51,12 +48,14 @@ function Login() {
           <div className="input-div">
             <input type="text" name="email"
               className="input-in input-ra" placeholder="Email"
+              value={email}
               onChange={onChange}
             />
           </div>
           <div className="input-div">
             <input type="password" name="password"
               className="input-in input-ra" onChange={onChange}
+              value={password}
               placeholder="Senha" />
           </div>
         </div>

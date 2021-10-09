@@ -1,13 +1,10 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
-/* import StoreContext from '../../Context/Context'; */
 import { AuthContext } from '../../Context/auth';
 
 const RoutesPrivate = ({ component: Component, ...rest }) => {
-  /* const { token } = useContext(StoreContext); */
   const { token } = useContext(AuthContext);
-  console.log(token);
 
   return (
     <Route
@@ -21,7 +18,7 @@ const RoutesPrivate = ({ component: Component, ...rest }) => {
 }
 
 RoutesPrivate.propTypes = {
-  component: PropTypes.element.isRequired,
+  component: PropTypes.func.isRequired,
 }
 
 export default RoutesPrivate;
