@@ -51,23 +51,32 @@ function Login() {
         }
         <div className="input-form">
           <div className="input-div">
-            <input type="text" name="email"
-              className="input-in input-ra" placeholder="Email"
+            <input type="text"
+              name="email"
+              className="input-in input-ra"
+              placeholder="Email"
               value={email}
               required
               onChange={onChange}
             />
           </div>
           <div className="input-div">
-            <input type="password" name="password"
-              className="input-in input-ra" onChange={onChange}
+            <input type="password"
+              name="password"
+              className="input-in input-ra"
+              onChange={onChange}
               value={password}
               required
-              placeholder="Senha" />
+              placeholder="Senha"
+            />
           </div>
         </div>
         <div className="input-form">
-          <button type="submit" value="Login" className="input-login input-ra">
+          <button
+            type="submit"
+            value="Login"
+            className="input-login input-ra"
+          >
             Entrar
           </button>
         </div>

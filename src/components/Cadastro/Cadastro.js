@@ -39,21 +39,34 @@ function Cadastrar() {
       <form onSubmit={onSubmit}>
         <div className="input-form">
           <div className="input-div">
-            <input type="text" name="name"
-              className="input-in input-ra" placeholder="Nome"
+            <input
+              type="text"
+              name="name"
+              className="input-in input-ra"
+              placeholder="Nome"
               onChange={onChange}
+              required
             />
           </div>
           <div className="input-div">
-            <input type="text" name="email"
-              className="input-in input-ra" placeholder="Email"
+            <input
+              type="text"
+              name="email"
+              className="input-in input-ra"
+              placeholder="Email"
               onChange={onChange}
+              required
             />
           </div>
           <div className="input-div">
-            <input type="password" name="password"
-              className="input-in input-ra" onChange={onChange}
-              placeholder="Senha" />
+            <input
+              type="password"
+              name="password"
+              className="input-in input-ra"
+              onChange={onChange}
+              placeholder="Senha"
+              required
+            /> 
           </div>
         </div>
         <div className="input-form">
@@ -67,36 +80,3 @@ function Cadastrar() {
 }
 
 export default Cadastrar;
-
-    {/* <form onSubmit={onSubmit}>
-      <div className="form-field">
-        <label htmlFor="name-login">Name</label>
-        <input
-          id="name-login"
-          type="text"
-          name="name"
-          onChange={onChange}
-        />
-      </div>
-      <div className="form-field">
-        <label htmlFor="email-login">Email</label>
-        <input
-          id="email-login"
-          type="email"
-          name="email"
-          onChange={onChange}
-        />
-      </div>
-      <div className="form-field">
-        <label htmlFor="password-login">Senha</label>
-        <input
-          type="password"
-          id="password-login"
-          name="password"
-          onChange={onChange}
-        />
-      </div>
-      <button type="submit">
-        Criar conta
-      </button>
-    </form> */}
