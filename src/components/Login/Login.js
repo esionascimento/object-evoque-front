@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { Login } from '../../store/Login/Login.actions';
+import { EmailLogin } from '../../store/Login/Login.actions';
+import { verifyLogin } from '../../util/verifyLogin';
+import { authLogin } from '../../store/fetchActions/fetchActions';
 /* import { AuthContext } from '../Context/auth'; */
 import './Login.css';
 
@@ -11,21 +13,12 @@ function initialState() {
   return { email: '', password: '' };
 }
 
-function verifyLogin({ email, password }) {
-  if (email === 'admin' && password === 'admin') {
-    return { token: '1234' };
-  }
-  return { error: 'Email ou senha invalido' };
-}
-
 function componentLogin() {
   const dispatch = useDispatch();
   const [valuesLogin, setValues] = useState(initialState);
-  console.log('valuesLogin :', valuesLogin);
   
   const [validLogin, setValidLogin] = useState(false);
   const { email, password } = valuesLogin;
-  /*   const { setToken } = useContext(AuthContext); */
   const history = useHistory();
   
   function onChange(event) {
@@ -40,8 +33,9 @@ function componentLogin() {
     event.preventDefault();
     const { token } = verifyLogin(valuesLogin);
     
+    dispatch(EmailLogin(email));
+    dispatch(authLogin(valuesLogin));
     if (token) {
-      dispatch(Login(email));
       history.push('/dashboard');
     }
     setValues(initialState);

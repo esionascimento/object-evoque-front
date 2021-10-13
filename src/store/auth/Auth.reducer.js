@@ -1,12 +1,16 @@
 const INITIAL_STATE = {
-  email: '',
+  isAuthenticated: false
 };
 
 export default function (state = INITIAL_STATE, action) {
   switch(action.type) {
-    case 'EMAIL_LOGIN':
+    case 'LOGIN':
       return {
-        email: action.payload[0]
+        ...state, isAuthenticated: true
+      }
+    case 'LOGOUT':
+      return {
+        ...state, isAuthenticated: false
       }
     default:
       return state;

@@ -1,6 +1,6 @@
-export function Login (email) {
+export function EmailLogin (email) {
   return {
-    type: 'login',
+    type: 'EMAIL_LOGIN',
     payload: [ email ]
   }
 }
