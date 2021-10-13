@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -17,6 +18,9 @@ function verifyLogin({ email, password }) {
 }
 
 function Login() {
+  const result = useSelector(function (state) {
+    
+  })
   const [values, setValues] = useState(initialState);
   const [validLogin, setValidLogin] = useState(false);
   const { email, password } = values;
