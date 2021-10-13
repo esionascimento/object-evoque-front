@@ -1,14 +1,12 @@
 const INITIAL_STATE = {
-  email: 'esio@esio.com',
-  password: '123456',
+  email: '',
 };
 
 export default function (state = INITIAL_STATE, action) {
   switch(action.type) {
     case 'login':
       return {
-        email: action.payload[0],
-        password: action.payload[1]
+        email: action.payload[0]
       }
     default:
       return state;

@@ -1,9 +1,10 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { AuthContext } from '../Context/auth';
+import { Login } from '../../store/Login/Login.actions';
+/* import { AuthContext } from '../Context/auth'; */
 import './Login.css';
 
 function initialState() {
@@ -17,30 +18,30 @@ function verifyLogin({ email, password }) {
   return { error: 'Email ou senha invalido' };
 }
 
-function Login() {
-  const result = useSelector(function (state) {
-    
-  })
-  const [values, setValues] = useState(initialState);
+function componentLogin() {
+  const dispatch = useDispatch();
+  const [valuesLogin, setValues] = useState(initialState);
+  console.log('valuesLogin :', valuesLogin);
+  
   const [validLogin, setValidLogin] = useState(false);
-  const { email, password } = values;
-  const { setToken } = useContext(AuthContext);
+  const { email, password } = valuesLogin;
+  /*   const { setToken } = useContext(AuthContext); */
   const history = useHistory();
-
+  
   function onChange(event) {
     const { value, name } = event.target;
     setValues({
-      ...values,
+      ...valuesLogin,
       [name]: value,
     })
   }
-
+  
   function onSubmit(event) {
     event.preventDefault();
-    const { token } = verifyLogin(values);
-
+    const { token } = verifyLogin(valuesLogin);
+    
     if (token) {
-      setToken(token);
+      dispatch(Login(email));
       history.push('/dashboard');
     }
     setValues(initialState);
@@ -58,9 +59,9 @@ function Login() {
             <input type="text"
               name="email"
               className="input-in input-ra"
-              placeholder="Email"
               value={email}
               required
+              placeholder="email@email.com"
               onChange={onChange}
             />
           </div>
@@ -99,4 +100,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default componentLogin;
