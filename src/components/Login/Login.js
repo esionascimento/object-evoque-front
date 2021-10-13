@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+/* import { useHistory } from 'react-router-dom'; */
 import { Link } from 'react-router-dom';
 
 import { EmailLogin } from '../../store/Login/Login.actions';
-import { verifyLogin } from '../../util/verifyLogin';
+/* import { verifyLogin } from '../../util/verifyLogin'; */
 import { authLogin } from '../../store/fetchActions/fetchActions';
-/* import { AuthContext } from '../Context/auth'; */
+
 import './Login.css';
 
 function initialState() {
@@ -19,7 +19,7 @@ function componentLogin() {
   
   const [validLogin, setValidLogin] = useState(false);
   const { email, password } = valuesLogin;
-  const history = useHistory();
+  /* const history = useHistory(); */
   
   function onChange(event) {
     const { value, name } = event.target;
@@ -31,13 +31,13 @@ function componentLogin() {
   
   function onSubmit(event) {
     event.preventDefault();
-    const { token } = verifyLogin(valuesLogin);
+    /* const { token } = verifyLogin(valuesLogin); */
     
     dispatch(EmailLogin(email));
     dispatch(authLogin(valuesLogin));
-    if (token) {
+    /* if (token) {
       history.push('/dashboard');
-    }
+    } */
     setValues(initialState);
     setValidLogin(true);
   }

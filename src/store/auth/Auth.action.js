@@ -1,13 +1,13 @@
-export function Login (token) {
+export function Login () {
   return {
     type: 'LOGIN',
-    payload: [ token ]
+    payload: true
   }
 }
 
-export function Logout (token) {
+export function Logout () {
   return {
     type: 'LOGOUT',
-    payload: [ token ]
+    payload: false
   }
 }
