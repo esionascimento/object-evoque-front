@@ -1,42 +1,41 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { AuthContext } from '../Context/auth';
+import { EmailLogin } from '../../store/Login/Login.actions';
+import { verifyLogin } from '../../util/verifyLogin';
+import { authLogin } from '../../store/fetchActions/fetchActions';
+/* import { AuthContext } from '../Context/auth'; */
 import './Login.css';
 
 function initialState() {
   return { email: '', password: '' };
 }
 
-function verifyLogin({ email, password }) {
-  if (email === 'admin' && password === 'admin') {
-    return { token: '1234' };
-  }
-  return { error: 'Email ou senha invalido' };
-}
-
-function Login() {
-  const [values, setValues] = useState(initialState);
+function componentLogin() {
+  const dispatch = useDispatch();
+  const [valuesLogin, setValues] = useState(initialState);
+  
   const [validLogin, setValidLogin] = useState(false);
-  const { email, password } = values;
-  const { setToken } = useContext(AuthContext);
+  const { email, password } = valuesLogin;
   const history = useHistory();
-
+  
   function onChange(event) {
     const { value, name } = event.target;
     setValues({
-      ...values,
+      ...valuesLogin,
       [name]: value,
     })
   }
-
+  
   function onSubmit(event) {
     event.preventDefault();
-    const { token } = verifyLogin(values);
-
+    const { token } = verifyLogin(valuesLogin);
+    
+    dispatch(EmailLogin(email));
+    dispatch(authLogin(valuesLogin));
     if (token) {
-      setToken(token);
       history.push('/dashboard');
     }
     setValues(initialState);
@@ -51,23 +50,32 @@ function Login() {
         }
         <div className="input-form">
           <div className="input-div">
-            <input type="text" name="email"
-              className="input-in input-ra" placeholder="Email"
+            <input type="text"
+              name="email"
+              className="input-in input-ra"
               value={email}
               required
+              placeholder="email@email.com"
               onChange={onChange}
             />
           </div>
           <div className="input-div">
-            <input type="password" name="password"
-              className="input-in input-ra" onChange={onChange}
+            <input type="password"
+              name="password"
+              className="input-in input-ra"
+              onChange={onChange}
               value={password}
               required
-              placeholder="Senha" />
+              placeholder="Senha"
+            />
           </div>
         </div>
         <div className="input-form">
-          <button type="submit" value="Login" className="input-login input-ra">
+          <button
+            type="submit"
+            value="Login"
+            className="input-login input-ra"
+          >
             Entrar
           </button>
         </div>
@@ -86,4 +94,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default componentLogin;
