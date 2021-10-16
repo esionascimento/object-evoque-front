@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+
+
+.app-header {
+  display: flex;  
+  justify-content: space-between;
+  background-color: silver;
+}
+
+.div {
+  display: flex;
+  flex-direction: row nowrap;
+}
+
+li {
+  margin: 5px;
+  padding: 10px;
+}
+
+li:hover {
+  background-color: slateblue;
+}

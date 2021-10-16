@@ -10,7 +10,7 @@ import RoutesPrivate from './components/Routes/Private/Private';
 
 import Home from './pages/Home/Home.js'
 import Cadastro from './components/Cadastro/Cadastro'
-import Dashboard from './pages/Dashboard.js';
+import Dashboard from './pages/Dashboard/Dashboard.js';
 import NotFound from './pages/NotFound.js';
 
 const App = () => {
