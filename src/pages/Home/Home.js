@@ -7,6 +7,7 @@ import './Home.css'
 function Home() {
   return (
     <>
+    
       <div className="box">
         <div className="container">
           <div className="left">
@@ -18,9 +19,9 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="rodape">
-        Aoba - Aux
-      </div>
+      <footer className="rodape">
+        Footer
+      </footer>
     </>
   );
 }
