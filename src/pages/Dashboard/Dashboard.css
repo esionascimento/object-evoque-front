@@ -4,8 +4,6 @@
   list-style-type: none;
 }
 
-
-
 .app-header {
   display: flex;  
   justify-content: space-between;
@@ -24,4 +22,18 @@ li {
 
 li:hover {
   background-color: slateblue;
+}
+
+.body {
+  display: flex;
+}
+
+.esquerda {
+  background-color: skyblue;
+  width: 30%;
+}
+
+.direita {
+  background-color: violet;
+  width: 70%;
 }
