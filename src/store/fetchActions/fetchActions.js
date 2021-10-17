@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Login } from '../auth/Auth.action';
 
 export const newCadastro = (user) => {
-  axios.post('http://localhost:4000/user', user)
+  axios.post('https://object-front.herokuapp.com/user', user)
   .then((res) => {
     console.log('res :', res);
     console.log(res.data);
