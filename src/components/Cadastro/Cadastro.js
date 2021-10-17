@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-/* import  { Redirect } from 'react-router-dom'; */
+import  { Redirect } from 'react-router-dom';
 import { newCadastro } from '../../store/fetchActions/fetchActions';
 
 import setStorage from '../../util/setStorage';
@@ -12,7 +12,7 @@ const initialState = {
 }
 
 function Cadastrar() {
-  /* const [redirect, setRedirect] = useState(false); */
+  const [redirect, setRedirect] = useState(false);
   const [cadastro, setCadastro] = useState(initialState);
   
   function onChange(event) {
@@ -25,13 +25,13 @@ function Cadastrar() {
   
   function onSubmit() {
     newCadastro(cadastro);
-    /* setRedirect(true); */
+    setRedirect(true);
     setStorage(cadastro);
   }
   
-  /* if (redirect) {
+  if (redirect) {
     return <Redirect to="/" />
-  } */
+  }
 
   return (
     <div className="card">
