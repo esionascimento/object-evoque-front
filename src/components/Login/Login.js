@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-/* import { useHistory } from 'react-router-dom'; */
 import { Link } from 'react-router-dom';
 
 import { EmailLogin } from '../../store/Login/Login.actions';
-/* import { verifyLogin } from '../../util/verifyLogin'; */
 import { authLogin } from '../../store/fetchActions/fetchActions';
 
 import './Login.css';
@@ -19,8 +17,7 @@ function componentLogin() {
   
   const [validLogin, setValidLogin] = useState(false);
   const { email, password } = valuesLogin;
-  /* const history = useHistory(); */
-  
+
   function onChange(event) {
     const { value, name } = event.target;
     setValues({
@@ -29,15 +26,11 @@ function componentLogin() {
     })
   }
   
-  function onSubmit(event) {
+  async function onSubmit(event) {
     event.preventDefault();
-    /* const { token } = verifyLogin(valuesLogin); */
-    
     dispatch(EmailLogin(email));
     dispatch(authLogin(valuesLogin));
-    /* if (token) {
-      history.push('/dashboard');
-    } */
+
     setValues(initialState);
     setValidLogin(true);
   }

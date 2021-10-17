@@ -20,7 +20,7 @@ const RoutesPrivate = ({ component: Component, ...rest }) => {
 
 RoutesPrivate.propTypes = {
   component: PropTypes.func.isRequired,
-  location: PropTypes.func.isRequired,
+  location: PropTypes.func,
 }
 
 export default RoutesPrivate;
