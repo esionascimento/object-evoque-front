@@ -23,6 +23,7 @@ function Cadastrar() {
   }
   
   function onSubmit() {
+    
     setRedirect(true);
     setStorage(cadastro);
   }

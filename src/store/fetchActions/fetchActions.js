@@ -1,10 +1,11 @@
-import api from '../../services/services';
+import baseURL from '../../services/services';
 import { Login } from '../auth/Auth.action';
 
 export const authLogin = (user) => {
   return (dispatch) => {
-    api.post('/login', user)
+    baseURL.post('/login', user)
       .then((res) => {
+        console.log('res :', res);
         localStorage.setItem('token', res.data.token);
         dispatch(Login());
 
