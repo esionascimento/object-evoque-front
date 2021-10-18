@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Login } from '../auth/Auth.action';
 
 export const newCadastro = (user) => {
-  axios.post('https://object-front.herokuapp.com/user', user)
+  axios.post('https://object-back.herokuapp.com/user', user)
   .then((res) => {
     console.log('res :', res);
     console.log(res.data);
@@ -13,7 +13,7 @@ export const newCadastro = (user) => {
 
 export const authLogin = (user) => {
   return (dispatch) => {
-    axios.post('https://object-front.herokuapp.com/login', user)
+    axios.post('https://object-back.herokuapp.com/login', user)
       .then((res) => {
         console.log('res :', res);
         localStorage.setItem('token', res.data.token);
