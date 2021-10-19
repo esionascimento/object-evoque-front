@@ -3,23 +3,20 @@ import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const RoutesPrivate = ({ component: Component, ...rest }) => {
+export const LoginAuth = ({ component: Component, ...rest }) => {
   const { isAuthenticated } = useSelector(state => state.auth);
-  
   return (
     <Route
       {...rest}
       render={(props) => isAuthenticated
-        ? <Component {...rest} />
-        : <Redirect to={{ pathname: "/not-found", state: { from: props.location } } }/>
+        ? <Redirect to={{ pathname: "/dasboard", state: { from: props.location } } }/>
+        : <Component {...rest} />
       }
     />
   )
 }
 
-RoutesPrivate.propTypes = {
+LoginAuth.propTypes = {
   component: PropTypes.func.isRequired,
   location: PropTypes.func,
 }
-
-export default RoutesPrivate;
